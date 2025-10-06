@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert to Uppercase</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff0000, #8a2be2); /* bright red to bright purple */
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 3em 1em;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-bottom: 2em;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.5);
+        }
+        label {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        input[type="text"] {
+            width: 220px;
+            padding: 0.5em;
+            border: none;
+            border-radius: 6px;
+            margin-right: 0.8em;
+            font-size: 1em;
+        }
+        input[type="submit"] {
+            background-color: #8a2be2;
+            border: none;
+            color: white;
+            padding: 0.6em 1.2em;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #ff0000;
+        }
+        p {
+            margin-top: 1.5em;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1> ❁ Convert String to Uppercase ❁ </h1>
+
+    <form action="/works" method="post">
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString" name="inputString" required>
+        <input type="submit" value="Convert">
+    </form>
+
+    {% if result %}
+    <p>Converted string: {{ result }}</p>
+    {% endif %}
+</body>
+</html>

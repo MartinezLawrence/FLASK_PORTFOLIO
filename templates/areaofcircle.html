@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculate Area of Circle</title>
+    <style>
+        body {
+            background-color: #add8e6; /* Light blue background */
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 2em;
+        }
+        h1 {
+            color: #003366;
+            margin-bottom: 1em;
+        }
+        form {
+            background-color: white;
+            display: inline-block;
+            padding: 1.5em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        input[type=number] {
+            width: 100px;
+            padding: 0.3em;
+            margin-right: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=submit] {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 0.5em 1.2em;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        input[type=submit]:hover {
+            background-color: #002244;
+        }
+        p {
+            margin-top: 1em;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <h1>─✦ Calculate Area of Circle ✦─</h1>
+
+    <form action="/areaofcircle" method="post">
+        <label for="radius">Enter the radius:</label>
+        <input type="number" id="radius" name="radius" step="any" required>
+        <input type="submit" value="Calculate">
+    </form>
+
+    {% if area is not none %}
+    <p>Area of circle: {{ area }}</p>
+    {% endif %}
+</body>
+</html>
