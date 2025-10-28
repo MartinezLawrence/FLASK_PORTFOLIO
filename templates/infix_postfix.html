@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Infix to Postfix Converter</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff7e5f, #8e44ad);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 3em 1em;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 2em;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            padding: 2em 3em;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(142, 68, 173, 0.6);
+            max-width: 450px;
+            width: 100%;
+        }
+        label {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+            display: block;
+            text-align: left;
+            color: #f0e6ff;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.7em;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 1.5em;
+            font-size: 1em;
+        }
+        input[type="submit"] {
+            background-color: #8e44ad;
+            color: #f0e6ff;
+            font-weight: 700;
+            padding: 0.8em 1.8em;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #ff7e5f;
+        }
+        p.result {
+            margin-top: 2em;
+            font-size: 1.3em;
+            font-weight: 600;
+            background-color: rgba(255, 126, 95, 0.4);
+            padding: 1em;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 126, 95, 0.7);
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Infix to Postfix Converter</h1>
+
+    <form method="post" action="/infix_postfix">
+        <label for="infix_expression">Enter infix expression:</label>
+        <input type="text" id="infix_expression" name="infix_expression" required placeholder="e.g. A + B * C">
+        <input type="submit" value="Convert to Postfix">
+    </form>
+
+    {% if result %}
+    <p class="result">Postfix expression: {{ result }}</p>
+    {% endif %}
+</body>
+</html>

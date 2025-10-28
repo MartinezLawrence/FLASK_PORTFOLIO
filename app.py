@@ -10,8 +10,8 @@ def index():
 def profile():
     return render_template('profile.html')
 
-@app.route('/works', methods=['GET', 'POST'])
-def works():
+@app.route('/touppercase', methods=['GET', 'POST'])
+def touppercase():
     result = None
     if request.method == 'POST':
         input_string = request.form.get('inputString', '')
@@ -39,6 +39,45 @@ def areaoftriangle():
 def contact():
     return render_template('contact.html')
 
+@app.route('/works')
+def works():
+    works_list = [
+        {'name': 'toUpperCase', 'url': '/touppercase'},
+        {'name': 'Area of Circle', 'url': '/areaofcircle'},
+        {'name': 'Area of Triangle', 'url': '/areaoftriangle'},
+        {'name': 'Infix to Postfix', 'url': '/infix_postfix'},
+    ]
+    return render_template('works.html', works=works_list)
+
+def infix_to_postfix(expression):
+    precedence = {'+':1, '-':1, '*':2, '/':2, '^':3}
+    stack = []
+    output = []
+    for token in expression.replace(' ', ''):
+        if token.isalnum():   
+            output.append(token)
+        elif token == '(':
+            stack.append(token)
+        elif token == ')':
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            stack.pop() 
+        else: 
+            while stack and stack[-1] != '(' and precedence.get(token, 0) <= precedence.get(stack[-1], 0):
+                output.append(stack.pop())
+            stack.append(token)
+    while stack:
+        output.append(stack.pop())
+    return ' '.join(output)
+
+@app.route('/infix_postfix', methods=['GET', 'POST'])
+def infix_postfix():
+    result = None
+    if request.method == 'POST':
+        infix_expr = request.form.get('infix_expression', '')
+        if infix_expr:
+            result = infix_to_postfix(infix_expr)
+    return render_template('infix_postfix.html', result=result)
 
 if __name__ == "__main__":
     app.run(debug=True)

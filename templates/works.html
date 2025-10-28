@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Programming Works</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 3em auto;
+            padding: 1em;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            background: #4caf50;
+            margin: 0.5em 0;
+            padding: 1em;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        li a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+        }
+        li:hover {
+            background-color: #357a38;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Programming Works</h1>
+    <ul>
+        {% for work in works %}
+            <li><a href="{{ work.url }}">{{ work.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
